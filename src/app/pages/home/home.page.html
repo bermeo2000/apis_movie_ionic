@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button ></ion-menu-button>
+    </ion-buttons>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col size="8">
+      <ion-input type="text" placeholder="Autor" [(ngModel)]="
+results" ></ion-input>
+    </ion-col>
+    <ion-col size="4">
+      <ion-button  expand="block" fill="clear" shape="round" (click)="buscar(
+        results)">
+        Buscar
+      </ion-button>
+    </ion-col>
+  </ion-row>
+          
+     
+  <div style="display: flex;align-items: center;" *ngIf="isMovies==false">
+    <ion-row>
+      <ion-col style="display: flex; justify-content: center; align-items: center; height: 100%; " size="12">
+    
+      </ion-col>
+      <ion-col style="padding-top: 5%; text-align: center;" size="12">
+        <ion-label > Busque los exitos de su artista favorito con solo su nombre</ion-label>
+      </ion-col>
+    </ion-row>
+  </div>
+
+ <div  *ngIf="isMovies==true">
+  <ion-card *ngFor="let i of movies" >
+    <ion-card>
+      <img alt="Silhouette of mountains" [src]="'https://image.tmdb.org/t/p/original/'+i.poster_path" />
+      <ion-card-header>
+        <ion-title> Titulo {{i.original_title}}</ion-title>
+        <ion-card-subtitle>Descripcion {{i.overview}}</ion-card-subtitle>
+        <ion-card-subtitle> Fecha {{i.release_date}}</ion-card-subtitle>
+        <ion-card-subtitle> Idioma {{i.original_language}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <!-- <ion-card-content>
+       <audio controls>
+        <source [src]="i.preview">
+       </audio>
+      </ion-card-content> -->
+    </ion-card>
+
+    <ion-col size="12">
+      <ion-buttons style="--background:#ed576b">
+        <ion-button (click)="obtenerDatos(i.id)" style="--background:#ed576b;color: #F8F8F8F8;">
+          <ion-icon slot="start" name="exit-outline"></ion-icon>
+          Guardar
+        </ion-button>
+      </ion-buttons>
+    </ion-col>
+
+   </ion-card>
+ </div>
+
+ 
+ 
+
+</ion-content>

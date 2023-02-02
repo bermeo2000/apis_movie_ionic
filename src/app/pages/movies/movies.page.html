@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button ></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Peliculas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let i of movies" >
+    <ion-card>  
+      <ion-card-content>
+        <ion-row>
+          <ion-col size="7">
+            <ion-row>
+              <ion-col size="12">
+                <img alt="Silhouette of mountains" [src]="'https://image.tmdb.org/t/p/original/'+i.poster_path" />
+              </ion-col>
+              <ion-col size="12">
+                <ion-title> Titulo {{i.original_title}}</ion-title>
+                <ion-card-subtitle>Descripcion {{i.overview}}</ion-card-subtitle>
+                <ion-card-subtitle> Fecha {{i.release_date}}</ion-card-subtitle>
+                <ion-card-subtitle> Idioma {{i.original_language}}</ion-card-subtitle>
+              </ion-col>
+            <!--   <ion-col size="12">
+                <audio controls>
+                  <source [src]="i.preview">
+                 </audio>
+              </ion-col> -->
+            </ion-row>
+          </ion-col>
+          <ion-col size="12">
+            <ion-buttons style="--background:#ed576b">
+              <ion-button (click)="eliminarPelicula(i.id)" style="--background:#ed576b;color: #F8F8F8F8;">
+                <ion-icon slot="start" name="trash"></ion-icon>
+                Eliminar
+              </ion-button>
+            </ion-buttons>
+          </ion-col>
+        </ion-row>
+       
+      </ion-card-content>
+    </ion-card>
+   </ion-card>
+</ion-content>
